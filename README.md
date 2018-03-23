@@ -7,7 +7,7 @@ Fill your softbank username & password into `account.cpp`, or the program will a
 
 ## Compile for Windows
 #### MSVC
-Install reference packages by [vcpkg][https://github.com/Microsoft/vcpkg]
+Install reference packages by [vcpkg](https://github.com/Microsoft/vcpkg)
 
 ```bash
 vcpkg install curl[non-http]:x86-windows
@@ -27,10 +27,11 @@ Or use CMake support in Visual Studio 2017, edit `CMakeSettings.json`:
     "generator": "Ninja",
     "configurationType": "Debug",
     "variables": [
-    {
-        "name": "CMAKE_TOOLCHAIN_FILE",
-        "value": "<PATH_TO_VCPKG>\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake"
-    }
+        {
+            "name": "CMAKE_TOOLCHAIN_FILE",
+            "value": "<PATH_TO_VCPKG>\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake"
+        }
+    ]
 }
 ```
 
