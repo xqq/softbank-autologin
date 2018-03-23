@@ -45,4 +45,7 @@ msbuild softbank_autologin.vcxproj /p:Configuration=Release
 Do it yourself
 
 ## Compile for macOS
-To be continued
+```bash
+cmake .
+make -j4
+```
