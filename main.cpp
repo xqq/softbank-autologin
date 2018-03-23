@@ -17,7 +17,7 @@ bool check_connect_success();
 size_t drop_libcurl_data(void* buffer, size_t size, size_t nmemb, void* userdata);
 
 int main() {
-#ifndef NDEBUG
+#if !defined(NDEBUG) && defined(WIN32)
     AutoDeleter<void> pause([](void*) {
         system("pause");
     });
