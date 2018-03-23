@@ -5,8 +5,6 @@
 #include "ssid.hpp"
 #include "utils.hpp"
 
-#define ENABLE_PROXY curl_easy_setopt(curl, CURLOPT_PROXY, "http://127.0.0.1:8888")
-
 enum SSIDType {
     k0001SoftBank = 0,
     kMobilePoint1 = 1
@@ -66,7 +64,6 @@ int main() {
     curl_easy_setopt(curl, CURLOPT_URL, "http://www.google.com/generate_204");
     curl_easy_setopt(curl, CURLOPT_USERAGENT, kUserAgent);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, drop_libcurl_data);
-    ENABLE_PROXY;
 
     result = curl_easy_perform(curl);
     if (result != CURLE_OK) {
@@ -139,7 +136,6 @@ void do_softbank_login(SSIDType type, const char* loginurl) {
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, drop_libcurl_data);
-    ENABLE_PROXY;
 
     std::string post_string;
 
@@ -176,7 +172,6 @@ bool check_connect_success() {
     curl_easy_setopt(curl, CURLOPT_URL, "http://www.google.com/generate_204");
     curl_easy_setopt(curl, CURLOPT_USERAGENT, kUserAgent);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, drop_libcurl_data);
-    ENABLE_PROXY;
 
     CURLcode result = curl_easy_perform(curl);
 
