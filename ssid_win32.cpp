@@ -9,9 +9,16 @@
 
 std::string is_connected_to_ssid(std::initializer_list<std::string> prefer_list) {
     std::string not_connected = "false";
-    HANDLE client_handle = NULL;
     DWORD current_version = 0;
     DWORD result = 0;
+
+    HANDLE client_handle = NULL;
+    AutoDeleter<void> client_handle_deleter([&client_handle](void*) {
+        if (client_handle != NULL) {
+            WlanCloseHandle(client_handle, NULL);
+            client_handle = NULL;
+        }
+    });
 
     WLAN_INTERFACE_INFO_LIST* if_list = nullptr;
     AutoDeleter<void> if_list_deleter([&if_list](void*) {
